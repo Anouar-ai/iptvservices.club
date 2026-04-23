@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "iptvservices-dev",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["/Users/mac/ipbo/.claude/dev.sh"],
+      "port": 3000
+    }
+  ]
+}

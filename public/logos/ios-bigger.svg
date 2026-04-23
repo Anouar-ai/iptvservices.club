@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="66" height="16" viewBox="0 0 66 16" role="img" aria-label="IOS">
+  <rect width="66" height="16" fill="none"/>
+  <text x="50%" y="50%"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="Arial, Helvetica, 'Segoe UI', sans-serif"
+        font-size="14.6"
+        font-weight="700"
+        letter-spacing="0.8"
+        fill="#FFFFFF"
+        text-rendering="optimizeLegibility">IOS</text>
+</svg>

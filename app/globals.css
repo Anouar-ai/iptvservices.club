@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Oxanium + Source Code Pro are loaded via next/font/google in app/layout.tsx */
+
+/* ─────────────────────────── Theme tokens (shadcn) ─────────────────────────── */
+:root {
+  color-scheme: dark;
+  /* ───── 2-color brand system ─────
+   *  Obsidian #0B0B0F  — premium cinematic base
+   *  Signal Amber #F5A524 — single high-contrast warm CTA
+   *  All other tokens are tints of these two.
+   */
+  --card: #15151B;
+  --ring: #F5A524;
+  --input: #2A2A33;
+  --muted: #1C1C24;
+  --accent: #F5A524;
+  --border: #2A2A33;
+  --radius: 0px;
+  --chart-1: #F5A524;
+  --chart-2: #D98F0E;
+  --chart-3: #FFC36B;
+  --chart-4: #8A6B2E;
+  --chart-5: #FFE0A6;
+  --popover: #15151B;
+  --primary: #F5A524;
+  --sidebar: #0B0B0F;
+  --secondary: #1C1C24;
+  --background: #0B0B0F;
+  --foreground: #F5F1E8;
+  --destructive: #FF5A3C;
+  --shadow-blur: 5px;
+  --shadow-color: hsl(0 0% 0%);
+  --sidebar-ring: #F5A524;
+  --shadow-spread: 0px;
+  --letter-spacing: 0em;
+  --shadow-opacity: 0.6;
+  --sidebar-accent: #F5A524;
+  --sidebar-border: #2A2A33;
+  --card-foreground: #F5F1E8;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 2px;
+  --sidebar-primary: #F5A524;
+  --muted-foreground: #9CA0AB;
+  --accent-foreground: #0B0B0F;
+  --popover-foreground: #F5F1E8;
+  --primary-foreground: #0B0B0F;
+  --sidebar-foreground: #F5F1E8;
+  --secondary-foreground: #F5F1E8;
+  --destructive-foreground: #0B0B0F;
+  --sidebar-accent-foreground: #0B0B0F;
+  --sidebar-primary-foreground: #0B0B0F;
+
+  /* Legacy ink / fire aliases — remapped to the new 2-color system
+   * "fire" now means amber so existing markup keeps semantics (CTA / highlight) */
+  --ink-900: var(--background);
+  --ink-800: var(--card);
+  --ink-700: var(--popover);
+  --ink-600: var(--border);
+  --fire-500: var(--primary);
+  --fire-600: #D98F0E;
+  --fire-400: #FFB54A;
+  --fire-300: #FFC36B;
+  --fire-700: #A86B08;
+  --line: rgba(245, 165, 36, 0.08);
+}
+
+.light {
+  color-scheme: light;
+  --card: #FFFFFF;
+  --ring: #D98F0E;
+  --input: #E3E0D6;
+  --muted: #F2EFE6;
+  --accent: #D98F0E;
+  --border: #E3E0D6;
+  --popover: #FFFFFF;
+  --primary: #D98F0E;
+  --sidebar: #FAF8F2;
+  --secondary: #F2EFE6;
+  --background: #FAF8F2;
+  --foreground: #0B0B0F;
+  --destructive: #D9381E;
+  --sidebar-ring: #D98F0E;
+  --shadow-opacity: 0.4;
+  --sidebar-accent: #D98F0E;
+  --sidebar-border: #E3E0D6;
+  --card-foreground: #0B0B0F;
+  --sidebar-primary: #D98F0E;
+  --muted-foreground: #5A5A63;
+  --accent-foreground: #0B0B0F;
+  --popover-foreground: #0B0B0F;
+  --primary-foreground: #0B0B0F;
+  --sidebar-foreground: #0B0B0F;
+  --secondary-foreground: #0B0B0F;
+  --destructive-foreground: #FFFFFF;
+  --sidebar-accent-foreground: #0B0B0F;
+  --sidebar-primary-foreground: #0B0B0F;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  font-family: 'Oxanium', ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Oxanium', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: var(--letter-spacing);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(1200px 700px at 78% -20%, rgba(245, 165, 36, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 10% 110%, rgba(245, 165, 36, 0.06), transparent 55%);
+}
+
+::selection { background: var(--primary); color: var(--primary-foreground); }
+
+/* ——— Layout ——— */
+.container-x    { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+/* Varied section rhythms — break the metronome feel */
+.section        { @apply py-20 sm:py-24 lg:py-28; }
+.section-tight  { @apply py-14 sm:py-16 lg:py-20; }
+.section-loose  { @apply py-24 sm:py-32 lg:py-40; }
+.rule           { @apply h-px w-full; background: var(--border); }
+.hairline       { height: 1px; background: linear-gradient(90deg, transparent, rgba(245,165,36,0.35), transparent); }
+.hover-lift     { transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms cubic-bezier(.2,.7,.2,1); }
+.hover-lift:hover { transform: translateY(-4px); }
+
+/* Pull quote — editorial style */
+.pullquote {
+  font-family: 'Oxanium', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/* ——— Typography system ——— */
+.eyebrow {
+  @apply text-xs font-medium uppercase tracking-[0.18em];
+  color: var(--muted-foreground);
+}
+.display {
+  font-family: 'Oxanium', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  font-weight: 700;
+  color: var(--foreground);
+}
+.h1 { @apply display text-[44px] sm:text-[60px] md:text-[72px]; }
+.h2 { @apply display text-[34px] sm:text-[44px] md:text-[52px]; }
+.h3 { @apply display text-[22px] sm:text-[26px]; letter-spacing: -0.01em; line-height: 1.1; }
+.lead {
+  @apply text-lg leading-relaxed sm:text-xl sm:leading-[1.55];
+  color: var(--muted-foreground);
+}
+
+/* ——— Buttons (sharp, per --radius: 0px) ——— */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px -10px rgba(245, 165, 36, 0.6);
+  transition: all 200ms ease;
+  text-transform: uppercase;
+}
+.btn-primary:hover { background: #FFB54A; transform: translateY(-1px); box-shadow: 0 14px 36px -10px rgba(245, 165, 36, 0.75); }
+.btn-primary:focus { outline: none; box-shadow: 0 0 0 4px rgba(245, 165, 36, 0.35); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  transition: all 200ms ease;
+  text-transform: uppercase;
+}
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); background: rgba(245, 165, 36, 0.08); }
+
+.btn-link {
+  @apply inline-flex items-center gap-1.5 text-sm font-medium transition;
+  color: var(--foreground);
+}
+.btn-link:hover { color: var(--primary); }
+
+/* ——— Surfaces ——— */
+.surface {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: var(--radius);
+}
+.surface-hover {
+  @apply transition duration-300;
+}
+.surface-hover:hover {
+  border-color: var(--primary);
+  background: #1f1f1f;
+}
+
+/* ——— Micro-elements ——— */
+.kicker {
+  @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em];
+  color: var(--primary);
+}
+.kicker::before {
+  content: "";
+  display: inline-block;
+  height: 1px;
+  width: 28px;
+  background: currentColor;
+}
+
+.detail { @apply flex items-start gap-3 text-[15px]; color: var(--foreground); }
+.detail > svg { @apply mt-0.5 shrink-0; color: var(--primary); }
+
+.num {
+  @apply inline-flex h-7 w-7 items-center justify-center text-[13px] font-semibold tabular-nums;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-variant-numeric: tabular-nums;
+}

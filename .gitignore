@@ -1,0 +1,11 @@
+node_modules
+.next
+.env*
+!.env.example
+.DS_Store
+*.log
+out
+build
+dist
+.vercel
+.claude/settings.local.json
