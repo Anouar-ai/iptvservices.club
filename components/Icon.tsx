@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import type { ReactElement, SVGProps } from 'react';
 
 type IconName =
   | 'tv' | 'film' | 'resolution' | 'shield' | 'devices' | 'refund'
@@ -8,7 +8,7 @@ type IconName =
 
 const P = { strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
 
-const paths: Record<IconName, JSX.Element> = {
+const paths: Record<IconName, ReactElement> = {
   tv: (
     <g {...P} stroke="currentColor" fill="none">
       <rect x="3" y="5" width="18" height="12" rx="2" />
